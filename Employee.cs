@@ -2,6 +2,11 @@
 
 namespace EmployeeRosterSystem
 {
+    /**
+     *  Employee
+     *  
+     *  An abstract class that handles informations of any employee
+     */
     public abstract class Employee : Person
     {
         private string companyName;
@@ -13,6 +18,11 @@ namespace EmployeeRosterSystem
             this.companyName = companyName;
         }
 
+        /**
+         *  An abstract method that would calculates the employee earnings
+         *  
+         *  @returns {decimal} - the calculated earnings of this employee
+         */
         public abstract decimal Earnings();
 
         public Dictionary<string, object> GetInfos()
@@ -27,6 +37,11 @@ namespace EmployeeRosterSystem
             };
         }
 
+        /**
+         *  An abstract method that determines the stats of a specific employee.
+         *  
+         *  @returns {Dictionary<string, object>} - a map of determinants
+         */
         public abstract Dictionary<string, object> GetDeterminants();
     }
 }

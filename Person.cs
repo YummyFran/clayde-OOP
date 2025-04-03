@@ -1,5 +1,10 @@
 ﻿namespace EmployeeRosterSystem
 {
+    /**
+     *  Person
+     *  
+     *  A class that describes what a person is
+     */
     public class Person
     {
         protected string name;

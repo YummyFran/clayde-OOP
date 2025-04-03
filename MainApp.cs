@@ -5,6 +5,13 @@ using System.Threading;
 
 namespace EmployeeRosterSystem
 {
+    /**
+     * Employee Roster System
+     * 
+     * Handles declarative functionalites like displaying menu and
+     * and recieving user inputs. Controls how the system should behave.
+     * 
+     */
     public class MainApp
     {
         private EmployeeRoster roster;
@@ -17,6 +24,11 @@ namespace EmployeeRosterSystem
             MainMenu();
         }
 
+        /**
+         * 
+         * Plays introduction screen of the system
+         * 
+         * */
         private void PlayIntro()
         {
             Console.Clear();
@@ -36,6 +48,11 @@ namespace EmployeeRosterSystem
             Console.ReadLine();
         }
 
+        /**
+         *  Asks user to input roster size infinitely until user enters a valid integer.
+         *  
+         *  @returns {int} A valid integer size.
+         */
         private int AskRosterSize()
         {
             Console.Clear();
@@ -64,6 +81,11 @@ namespace EmployeeRosterSystem
             return size;
         }
 
+        /**
+         *  Displays the main employee roster menu and ask user for an action to execute.
+         *  
+         *  @returns {int} The choice of action in a form of integer.
+         */
         private int DisplayMainMenu()
         {
             int choice;
@@ -89,6 +111,9 @@ namespace EmployeeRosterSystem
             return choice;
         }
 
+        /**
+         * Handles the choice of action.
+         */
         private void MainMenu()
         {
             int choice = DisplayMainMenu();
@@ -114,6 +139,9 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  Ask for employee details and add it to the roster if a slot is available.
+         */
         private void AddEmployee()
         {
             Console.Clear();
@@ -181,6 +209,9 @@ namespace EmployeeRosterSystem
                 MainMenu();
         }
 
+        /**
+         *  A subfunction of AddEmployee that adds an employee as a commissioned employee.
+         */
         private void AddCommissionedEmployee(string name, string address, string company, int age)
         {
             decimal regularSalary = ValidateInput<decimal>("Regular salary: ", "float");
@@ -192,6 +223,9 @@ namespace EmployeeRosterSystem
                 PrintText("Employee added successfully\n", 1);
         }
 
+        /**
+         *  A subfunction of AddEmployee that adds an employee as an hourly employee.
+         */
         private void AddHourlyEmployee(string name, string address, string company, int age)
         {
             int hoursWorked = ValidateInput<int>("Hours worked: ", "integer");
@@ -202,6 +236,9 @@ namespace EmployeeRosterSystem
                 PrintText("Employee added successfully\n", 1);
         }
 
+        /**
+         *  A subfunction of AddEmployee that adds an employee as a piece worker.
+         */
         private void AddPieceWorker(string name, string address, string company, int age)
         {
             int itemsProduced = ValidateInput<int>("Number of items produced: ", "integer");
@@ -212,6 +249,9 @@ namespace EmployeeRosterSystem
                 PrintText("Employee added successfully\n", 1);
         }
 
+        /**
+         *  Asks user to delete an employee by its index and delete it simultaneously when found.
+         */
         private void DeleteEmployee()
         {
             Console.Clear();
@@ -249,6 +289,9 @@ namespace EmployeeRosterSystem
             DeleteEmployee();
         }
 
+        /**
+         *  Displays the accessublity menu and ask user for an action to execute.
+         */
         private void OtherMenu()
         {
             int choice;
@@ -292,6 +335,9 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  Displays a menu for displaying employees and ask user for an action to execute.
+         */
         private void DisplayMenu()
         {
             int choice;
@@ -335,6 +381,9 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  An action that displays all employees.
+         */
         private void DisplayAllEmployees()
         {
             Console.Clear();
@@ -345,6 +394,9 @@ namespace EmployeeRosterSystem
             DisplayMenu();
         }
 
+        /**
+         *  An action that displays all commissioned employees.
+         */
         private void DisplayCommissionedEmployees()
         {
             Console.Clear();
@@ -355,6 +407,9 @@ namespace EmployeeRosterSystem
             DisplayMenu();
         }
 
+        /**
+         *  An action that displays all hourly employees.
+         */
         private void DisplayHourlyEmployees()
         {
             Console.Clear();
@@ -365,6 +420,9 @@ namespace EmployeeRosterSystem
             DisplayMenu();
         }
 
+        /**
+         *  An action that displays all piece workers.
+         */
         private void DisplayPieceWorkers()
         {
             Console.Clear();
@@ -375,6 +433,9 @@ namespace EmployeeRosterSystem
             DisplayMenu();
         }
 
+        /**
+         *  Displays a list of employees in a card manner.
+         */
         private void DisplayEmployees(List<object[]> employees, bool all = false)
         {
             if (employees.Count == 0)
@@ -401,6 +462,9 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  Displays a menu for counting employees and ask user for an action to execute.
+         */
         private void CountMenu()
         {
             int choice;
@@ -444,6 +508,9 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  Counts all employees and display it to the screen
+         */
         private void CountAllEmployees()
         {
             Console.Clear();
@@ -458,6 +525,9 @@ namespace EmployeeRosterSystem
             CountMenu();
         }
 
+        /**
+         *  Counts all commissioned employees and display it to the screen
+         */
         private void CountCommissionedEmployees()
         {
             Console.Clear();
@@ -472,6 +542,9 @@ namespace EmployeeRosterSystem
             CountMenu();
         }
 
+        /**
+         *  Counts all hourly employees and display it to the screen
+         */
         private void CountHourlyEmployees()
         {
             Console.Clear();
@@ -486,6 +559,9 @@ namespace EmployeeRosterSystem
             CountMenu();
         }
 
+        /**
+         *  Counts all piece workers and display it to the screen
+         */
         private void CountPieceWorkers()
         {
             Console.Clear();
@@ -500,6 +576,9 @@ namespace EmployeeRosterSystem
             CountMenu();
         }
 
+        /**
+         *  Displays all the employee details with their stats and calculated earnings.
+         */
         private void Payroll()
         {
             Console.Clear();
@@ -553,6 +632,12 @@ namespace EmployeeRosterSystem
             OtherMenu();
         }
 
+        /**
+         *  A helper function to generate a left aligned textbox.
+         *  
+         *  @param {List<string>} texts - a list of raw strings to be generated inside a box.
+         *  @returns {List<string>} A generated textbox
+         */
         private List<string> GenerateLeftAlignedTextBox(List<string> texts)
         {
             var box = new List<string>();
@@ -582,6 +667,12 @@ namespace EmployeeRosterSystem
             return box;
         }
 
+        /**
+         *  A helper function to generate a center aligned textbox.
+         *  
+         *  @param {string[]} texts - an array of raw strings to be generated inside a box.
+         *  @returns {List<string>} A generated textbox
+         */
         private List<string> GenerateTextBox(string[] texts)
         {
             if (texts == null) texts = new[] { "" };
@@ -594,12 +685,14 @@ namespace EmployeeRosterSystem
             }
             int padding = 8;
 
+            // row
             for (int i = 0; i < texts.Length + 3; i++)
             {
                 string current = i == 0 ? "." : "|";
                 int textSize = i > 1 && i < texts.Length + 2 ? texts[i - 2].Length : maxTextSize;
                 bool isOdd = (maxTextSize - textSize) % 2 == 1;
 
+                // col
                 for (int j = 0; j < maxTextSize + (padding * 2); j++)
                 {
                     current += (i == 0 || i == 2 + texts.Length) ? '_' :
@@ -615,11 +708,22 @@ namespace EmployeeRosterSystem
             return box;
         }
 
+        /**
+         *  A helper function to generate a center aligned textbox.
+         *  
+         *  @param {string} text - a string to be generated inside a box.
+         *  @returns {List<string>} A generated textbox
+         */
         private List<string> GenerateTextBox(string text)
         {
             return GenerateTextBox(new[] { text });
         }
 
+        /**
+         *  Prints an animated list of strings
+         *  
+         *  @param {List<string>} list - a list of string
+         */
         private void PrintList(List<string> list)
         {
             foreach (var item in list)
@@ -629,14 +733,54 @@ namespace EmployeeRosterSystem
             }
         }
 
+        /**
+         *  Prints an animated array of strings
+         *  
+         *  @param {string[]} text - an array of strings to be printed.
+         *  @param {int} [duration = 1] - duration of the animation in seconds.
+         *  @param {int} [startRow = 0] - a custom starting row to print and animate.
+         */
         private void PrintText(string[] text, int duration = 1, int startRow = 0)
         {
-            foreach (var line in text)
+            if (text == null || text.Length == 0) return;
+
+            int rows = text.Length;
+            int cols = text.Max(line => line.Length);
+            int totalCharacters = rows * cols;
+            double delay = (double)duration / totalCharacters;
+
+            char[][] output = new char[rows][];
+            for (int i = 0; i < rows; i++)
+                output[i] = new string(' ', cols).ToCharArray();
+
+            for (int d = 0; d < rows + (cols * 3); d++)
             {
-                Console.WriteLine(line);
+                for (int row = 0; row <= d; row++)
+                {
+                    int col = d - row;
+                    if (row < rows && col < text[row].Length)
+                        output[row][col] = text[row][col];
+                }
+
+                for (int i = 0; i < rows; i++)
+                {
+                    Console.SetCursorPosition(0, startRow + i);
+                    Console.Write(new string(output[i]).TrimEnd());
+                }
+
+                Thread.Sleep((int)(delay * 1000));
             }
+
+            Console.WriteLine();
         }
 
+        /**
+         *  Prints an animated string.
+         *  
+         *  @param {string} text - a strings to be printed.
+         *  @param {int} [duration = 1] - duration of the animation in seconds.
+         *  @param {int} [startRow = 0] - a custom starting row to print and animate.
+         */
         private void PrintText(string text, int duration = 1, int startRow = 0)
         {
             if (string.IsNullOrEmpty(text)) return;
@@ -654,6 +798,13 @@ namespace EmployeeRosterSystem
             Console.WriteLine();
         }
 
+        /**
+         *  Prints an animated list of strings
+         *  
+         *  @param {List<string>} text - a list of strings to be printed.
+         *  @param {int} [duration = 1] - duration of the animation in seconds.
+         *  @param {int} [startRow = 0] - a custom starting row to print and animate.
+         */
         private void PrintText(List<string> text, int duration = 1, int startRow = 0)
         {
             if (text == null || text.Count == 0) return;
@@ -688,6 +839,13 @@ namespace EmployeeRosterSystem
             Console.WriteLine();
         }
 
+        /**
+         *  A helper function to validate any user inputs.
+         *  
+         *  @param {string} label - a subject user input to be validated
+         *  @param {string} [expectedType = "string"] - an expected type of a label
+         *  @returns {T} a generic object of type T that contains the parsed input.
+         */
         private T ValidateInput<T>(string label, string expectedType = "string")
         {
             while (true)
